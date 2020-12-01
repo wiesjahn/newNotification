@@ -1,0 +1,35 @@
+{
+    "paths": [
+        {
+            "name": "/api",
+            "lambdaFunction": "newnotificationfunc",
+            "privacy": {
+                "open": true
+            }
+        }
+    ],
+    "resourceName": "newpushapi",
+    "apiName": "newpushapi",
+    "functionArns": [
+        {
+            "lambdaFunction": "newnotificationfunc"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-newnotification-dev-161212-authRole",
+        "unAuthRoleName": "amplify-newnotification-dev-161212-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "newnotificationfunc",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ],
+    "uuid": "a829643d"
+}
