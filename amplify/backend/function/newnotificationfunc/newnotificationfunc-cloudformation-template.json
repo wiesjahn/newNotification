@@ -63,7 +63,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-newnotification-dev-161212-deployment",
-					"S3Key": "amplify-builds/newnotificationfunc-474c62392f4f70427259-build.zip"
+					"S3Key": "amplify-builds/newnotificationfunc-6c74614e30484f573579-build.zip"
 				}
 			}
 		},

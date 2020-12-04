@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native'
 
-export default function Button({ scheduleNotification, title }) {
+export default function Button({ scheduleNotification, title, expoPushToken = null }) {
   return (
     <TouchableOpacity
       style={{
@@ -13,7 +13,7 @@ export default function Button({ scheduleNotification, title }) {
 
       }}
       onPress={async () => {
-        await scheduleNotification();
+        await scheduleNotification(expoPushToken);
       }}
     >
       <Text style={{

@@ -49,20 +49,22 @@ export default function App() {
       }}>
       <Text style={{ marginBottom: 50 }}>Your expo push token: {expoPushToken}</Text>
       <Button
-        scheduleNotification={schedulePushNotification}
-        title='Press to schedule a normal notification'
+        expoPushToken={expoPushToken}
+        scheduleNotification={amplifyApiCall}
+        title='Press to send a notification via amplify'
       />
       <Button
         scheduleNotification={scheduleTwoNotifications}
-        title='Press to schedule a message notification'
+        title='Press to schedule 2 notifications from app'
       />
       <Button
         scheduleNotification={schedulePushNotification}
-        title='Press to schedule a task notification'
+        title='Press to schedule a notification via app'
       />
       <Button
-        scheduleNotification={schedulePushNotification}
-        title='Press to schedule a random notification'
+        expoPushToken={expoPushToken}
+        scheduleNotification={amplifyApiCall2Notifications}
+        title='Press to end 2 notifications via amplify'
       />
 
     </View>
@@ -118,6 +120,27 @@ async function scheduleTwoNotifications() {
 async function amplifyApiCall(expoPushToken) {
   const api = 'newpushapi';
   const path = '/api'
+  const myInit = {
+    headers: {
+      "Connection": "Keep-Alive",
+      "Keep-Alive": "timeout=60"
+    },
+    body: {
+      "somePushTokens": expoPushToken,
+    }
+  }
+  try {
+    const response = await API.post(api, path, myInit);
+    console.log(response)
+  }
+  catch (err) {
+    console.log(err)
+  }
+}
+
+async function amplifyApiCall2Notifications(expoPushToken) {
+  const api = 'newpushapi';
+  const path = '/api/test'
   const myInit = {
     headers: {
       "Connection": "Keep-Alive",
