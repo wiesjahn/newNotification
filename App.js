@@ -66,6 +66,11 @@ export default function App() {
         scheduleNotification={amplifyApiCall2Notifications}
         title='Press to end 2 notifications via amplify'
       />
+      <Button
+        expoPushToken={null}
+        scheduleNotification={amplifyApiCallToIos}
+        title='Send notifications to iphone via amplify'
+      />
 
     </View>
   );
@@ -148,6 +153,27 @@ async function amplifyApiCall2Notifications(expoPushToken) {
     },
     body: {
       "somePushTokens": expoPushToken,
+    }
+  }
+  try {
+    const response = await API.post(api, path, myInit);
+    console.log(response)
+  }
+  catch (err) {
+    console.log(err)
+  }
+}
+
+async function amplifyApiCallToIos() {
+  const api = 'newpushapi';
+  const path = '/api/test'
+  const myInit = {
+    headers: {
+      "Connection": "Keep-Alive",
+      "Keep-Alive": "timeout=60"
+    },
+    body: {
+      "somePushTokens": 'ExponentPushToken[xOmMZCIXsk3_tGMbzJU36y]',
     }
   }
   try {
